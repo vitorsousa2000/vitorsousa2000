@@ -9,9 +9,9 @@ def screening3(dx):
     for i in np.arange(0, 100+dx, dx):
         for j in np.arange(0, (100-i) + dx, dx):
             x0 = i/2
-            x1 = j
-            x2 = (100-i-j)
-            x3 = i/2
+            x1 = i/2
+            x2 = j
+            x3 = (100-i-j)
             composicoes.append([x0, x1, x2, x3])
     composicoes = np.array(composicoes)
     return composicoes
@@ -48,7 +48,7 @@ for k in range (len(comp3)): #loop para varrer os dados
             CRIT = 100
         else:
             CRIT = 75
-    a[comp3[k][0]+ comp3[k][3], comp3[k][1], comp3[k][2]] = CRIT #Aqui acrescentamos as composições ao dicionário juntamente com a informação
+    a[comp3[k][0]+ comp3[k][1], comp3[k][2], comp3[k][3]] = CRIT #Aqui acrescentamos as composições ao dicionário juntamente com a informação
 print(a)                                            #se haverá ou não fase sigma (CRIT=1 significa que há fase sigma, CRIT=0 que não)
 a[0,0,0] = 100
 
@@ -57,9 +57,9 @@ figure, tax = ternary.figure(scale=100)
 
 fontsize = 15
 
-tax.right_corner_label("VCo", fontsize=fontsize, zorder=3)
-tax.top_corner_label("Cr", fontsize=fontsize, zorder=3)
-tax.left_corner_label("Mn", fontsize=fontsize, zorder=3)
+tax.right_corner_label("VCr", fontsize=fontsize, zorder=3)
+tax.top_corner_label("Mn", fontsize=fontsize, zorder=3)
+tax.left_corner_label("Co", fontsize=fontsize, zorder=3)
 
 # define os ticks do triangulo. podemos alterar tambem o seu tamanho
 tax.ticks(axis='lbr', multiple=10, linewidth=0.5, offset=0.01, fontsize=8)
